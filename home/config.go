@@ -68,6 +68,7 @@ type configuration struct {
 	controlLock      sync.Mutex
 	transport        *http.Transport
 	client           *http.Client
+	auth             *Auth
 
 	// cached version.json to avoid hammering github.io for each page reload
 	versionCheckJSON     []byte

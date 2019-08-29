@@ -34,6 +34,7 @@ func initDNSServer(baseDir string) {
 	}
 
 	config.dnsServer = dnsforward.NewServer(baseDir)
+	config.auth = InitSessions()
 
 	initRDNS()
 }
@@ -183,5 +184,6 @@ func stopDNSServer() error {
 		return errorx.Decorate(err, "Couldn't stop forwarding DNS server")
 	}
 
+	config.auth.Close()
 	return nil
 }
